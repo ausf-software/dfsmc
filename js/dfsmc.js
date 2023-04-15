@@ -30,7 +30,7 @@ document.getElementById("mask-submit").onclick = function(){
 			masks.push(getMaskObject(inputs[i].value, 0, 0));
 		}
 		
-		var sm = new DFSM(alphabet, masks);
+		var sm = new DFSM(alphabet, masks, false);
 		sm.calculateStates();
 		
 	} else {

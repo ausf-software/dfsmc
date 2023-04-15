@@ -41,3 +41,33 @@ function getMaskObject(str, type_logic, type_content) {
 
 	return new Mask(params, type_logic, type_content);
 }
+
+function getStateError(name, alphabet) {
+	var st = new State(name);
+	for (var i = 0; i < alphabet.length; i++) {
+		st.addTransition(new Transition(st.name, alphabet[i], st.name));
+	}
+	return st;
+}
+
+function calculateErrorState(one_error_state, errors, state, _char, alphabet) {
+	if (!one_error_state) {
+		console.log(state);
+		errors.push(getStateError(state.name + " Error", alphabet));
+		state.addTransition(new Transition(state.name, _char, state.name + _char + " Error"));
+	} else {
+		if (errors.length == 0) {
+			errors.push(getStateError("Error", alphabet));
+		}
+		state.addTransition(new Transition(state.name, _char, "Error"));
+	}
+}
+
+function createStateTransition(states, state, _char) {
+	states.push(new State(state.name + _char));
+	state.addTransition(new Transition(state.name, _char, state.name + _char));
+}
+
+function getStateOfMaskPos(states, mask_pos, start) {
+	return mask_pos == -1 ? start : states[mask_pos];
+}
