@@ -31,6 +31,7 @@ document.getElementById("mask-submit").onclick = function(){
 		}
 		
 		var sm = new DFSM(alphabet, masks);
+		sm.calculateStates();
 		
 	} else {
 		alert("Invalid text");

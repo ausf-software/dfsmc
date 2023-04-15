@@ -38,6 +38,6 @@ function getMaskObject(str, type_logic, type_content) {
 		
 		params.push(new MaskParametr(strs[i], 3));
 	}
-	
+
 	return new Mask(params, type_logic, type_content);
 }

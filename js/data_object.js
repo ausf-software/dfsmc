@@ -4,7 +4,7 @@ class MaskParametr {
 	// 1 в начеле есть *
 	// 2 в конце есть *
 	// 3 в начале и конце есть *
-	constructor (type, str) {
+	constructor (str, type) {
 		this.type = type;
 		this.str = str;
 	}
@@ -39,9 +39,9 @@ class Transition {
 
 class State {
 
-    constructor (name, transitions) {
+    constructor (name) {
 		this.name = name;
-		this.transitions = transitions;
+		this.transitions = [];
 	}
 	
 	addTransition (trans) {
